@@ -1,4 +1,4 @@
-url: https://walabo-git.github.io/pauwa
+baseurl: pauwa
 defaults:
   - scope:
       path: ""
