@@ -1,0 +1,33 @@
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build and deploy
+        run: |
+          mkdir -p docs/.jekyll-cache
+          mkdir -p docs/_site
+          docker run --rm -v ${{ github.workspace }}/docs:/srv/jekyll jekyll/builder:latest jekyll build -V --trace
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs/_site
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

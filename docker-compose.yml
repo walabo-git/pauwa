@@ -1,0 +1,19 @@
+version: "3"
+services:
+  service_jekyll:
+    build:
+      context: .
+      dockerfile: ./docker/jekyll/Dockerfile
+    container_name: local_jekyll
+    volumes:
+      - ./docs:/srv/jekyll
+    command: >
+      /bin/bash -c "
+        mkdir -p /srv/jekyll/.jekyll-cache
+        mkdir -p /srv/jekyll/_site
+        jekyll serve -s /srv/jekyll --livereload
+      "
+    init: true
+    ports:
+      - 44001:4000
+      - 35729:35729

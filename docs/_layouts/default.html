@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  {% capture robots %}{{page.robots}}{% endcapture %} {% if page.json_ld_path %}
+  {% capture jsonldPath %}jsonld/{{page.json_ld_path}}.html{% endcapture %} {%
+  include head-common.html jsonld-path=jsonldPath robots=robots %} {% else %} {%
+  include head-common.html robots=robots %} {% endif %}
+  <body>
+    <div class="header-h"></div>
+    <div class="entry-btn grade">
+      <a
+        href="{{ '/reserve'|  append: '?job=' | append: page.job_param | relative_url }}"
+        ><span>予約する</span></a
+      >
+    </div>
+    <header class="header">
+      <div class="header-inner">
+        <nav class="nav" id="navMenu">
+          <div class="nav-list" id="navList">
+            <div class="nav-wrap">
+              <div class="nav-box">
+                <div class="nav-head">
+                  <p class="nav-head-ja">pauwa</p>
+                </div>
+                <ul class="nav-content">
+                  <li class="nav-item">
+                    <a href="{{ '#about' | relative_url }}">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ '#timeline' | relative_url }}">Timeline</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ '#speakers' | relative_url }}">Speakers</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="nav-btn" id="navBtn">
+          <div class="ham">
+            <span class="ham-line ham-line-1"></span
+            ><span class="ham-line ham-line-2"></span
+            ><span class="ham-line ham-line-3"></span>
+          </div>
+          <p class="nav-btn-txt">MENU</p>
+        </div>
+      </div>
+    </header>
+    {{ content }}
+    <footer class="footer">
+      <div class="totop is-pc"></div>
+    </footer>
+  </body>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="{{ '/assets/js/swiper.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+  {% if page.entry-js %}{% include entry-js.html %}{% endif %}
+</html>

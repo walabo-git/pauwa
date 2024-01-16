@@ -1,0 +1,36 @@
+<head prefix="og: https://ogp.me/ns#">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}" />
+  {% if include.robots == "none" %}
+  <meta name="robots" content="none" />
+  {% endif %} {% if page.url =='/' %} {% assign url = site.url %} {% else %} {%
+  assign url = page.url | absolute_url %} {%endif %} {% assign removedHtml = url
+  | remove: '.html' %}
+  <link rel="canonical" href="{{removedHtml}}" />
+  <!-- ogp -->
+  <meta property="og:title" content="pauwa" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{removedHtml}}" />
+  <meta
+    property="og:image"
+    content="{{ '/assets/images/common/ogp.png' | relative_url }}"
+  />
+  <meta property="og:site_name" content="pauwa" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary" />
+  <!-- /ogp -->
+  {% if include.jsonld-path %} {% include {{ include.jsonld-path }} %} {% endif
+  %}
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+</head>
