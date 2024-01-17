@@ -11,7 +11,7 @@ services:
       /bin/bash -c "
         mkdir -p /srv/jekyll/.jekyll-cache
         mkdir -p /srv/jekyll/_site
-        jekyll serve -s /srv/jekyll --livereload
+        jekyll serve -s /srv/jekyll --livereload --baseurl "/"
       "
     init: true
     ports:

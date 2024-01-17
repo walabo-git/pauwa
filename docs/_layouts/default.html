@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
-  {% capture robots %}{{page.robots}}{% endcapture %} {% if page.json_ld_path %}
-  {% capture jsonldPath %}jsonld/{{page.json_ld_path}}.html{% endcapture %} {%
-  include head-common.html jsonld-path=jsonldPath robots=robots %} {% else %} {%
-  include head-common.html robots=robots %} {% endif %}
+  {% capture robots %}{{page.robots}}{% endcapture %}
+  {% include head-common.html robots=robots %}
   <body>
     <div class="header-h"></div>
     <div class="entry-btn grade">
       <a
-        href="{{ '/reserve'|  append: '?job=' | append: page.job_param | relative_url }}"
+        href="{{ '/reserve' | relative_url }}"
         ><span>予約する</span></a
       >
     </div>
@@ -26,10 +24,13 @@
                     <a href="{{ '#about' | relative_url }}">About</a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ '#timeline' | relative_url }}">Timeline</a>
+                    <a href="{{ '#speakers' | relative_url }}">Speakers</a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ '#speakers' | relative_url }}">Speakers</a>
+                    <a href="{{ '#contents' | relative_url }}">Contents</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ '#timeline' | relative_url }}">Timeline</a>
                   </li>
                 </ul>
               </div>
